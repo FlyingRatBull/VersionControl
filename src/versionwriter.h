@@ -26,6 +26,16 @@
 class VersionWriter
 {
 	public:
+		/**
+		 * @brief Writes version information to a file
+		 *
+		 * @param file Filename of file to write to
+		 * @param major Major part
+		 * @param minor Minor part
+		 * @param patch Patch part
+		 * @param extra Extra part
+		 * @return TRUE if succesfull; FALSE otherwise
+		 **/
 		virtual bool write(const QString& file, int major, int minor = 0, int patch = 0, int extra = 0) = 0;
 };
 

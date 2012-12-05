@@ -28,17 +28,60 @@ class VersionReader
 	public:
 		explicit VersionReader();
 		
+		/**
+		 * @brief Reads version values from a file
+		 *
+		 * @param file Filename of file to read from
+		 * @return TRUE if seccussfully read; FALSE otherwise
+		 **/
 		virtual bool read(const QString& file) = 0;
 		
+		/**
+		 * @brief Major part of version
+		 * 
+		 * X.y.z-e
+		 *
+		 * @return int
+		 **/
 		int major() const;
 		
+		/**
+		 * @brief Minor part of version
+		 * 
+		 * x.Y.z-e
+		 *
+		 * @return int
+		 **/
 		int minor() const;
 		
+		/**
+		 * @brief Patch part of version
+		 * 
+		 * x.y.Z-e
+		 *
+		 * @return int
+		 **/
 		int patch() const;
 		
+		/**
+		 * @brief Extra part of version
+		 * 
+		 * x.y.z.-E
+		 *
+		 * @return int
+		 **/
 		int extra() const;
 		
 	protected:
+		/**
+		 * @brief Sets the version information contained in the file
+		 *
+		 * @param major Major part
+		 * @param minor Minor part
+		 * @param patch Patch part
+		 * @param extra Extra part
+		 * @return void
+		 **/
 		void setVersion(int major, int minor = 0, int patch = 0, int extra = 0);
 		
 	private:
