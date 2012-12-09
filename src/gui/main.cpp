@@ -17,12 +17,29 @@
  */
 
 #include <QtGui/QApplication>
+#include <QtCore/QDir>
 
 #include "mainwindow.h"
+
+void printHelp()
+{
+	qDebug("%s %s %s",
+				 qPrintable(QObject::tr("Usage:")),
+				 qPrintable(QCoreApplication::applicationFilePath().split(QDir::separator()).last()),
+				 qPrintable(QObject::tr("[Options]")));
+	qDebug("    --help | -h                                 %s", qPrintable(QObject::tr("Print this help")));
+}
+
 
 int main(int argc, char ** argv)
 {
 	QApplication		app(argc, argv);
+	
+	if(app.arguments().contains("--help") || app.arguments().contains("-h"))
+	{
+		printHelp();
+		return 0;
+	}
 	
 	MainWindow		win;
 	
